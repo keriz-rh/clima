@@ -1,8 +1,83 @@
 .alert {
     text-align: center;
-    margin-bottom: 2rem;
+    margin: 0 auto 2rem;
+    padding: 1.5rem 2rem;
     text-transform: uppercase;
     font-weight: 900;
     font-size: 1.8rem;
+    letter-spacing: 1px;
+    border-radius: 0.8rem;
+    width: fit-content;
+    max-width: 90%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-out;
+    animation: fadeIn 0.5s ease-in-out;
     
-}
+    /* Variantes de color (puedes usar una sola o crear clases separadas) */
+    background-color: #f8f9fa;
+    color: #212529;
+    border-left: 5px solid #ffd43b;
+  }
+  
+  /* Efecto de borde animado */
+  .alert::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ffd43b, #fcc419);
+    transition: width 0.6s ease;
+  }
+  
+  .alert:hover::after {
+    width: 100%;
+  }
+  
+  /* Variantes de alerta (opcional) */
+  .alert.success {
+    background-color: #ebfbee;
+    color: #2b8a3e;
+    border-left-color: #40c057;
+  }
+  
+  .alert.error {
+    background-color: #fff5f5;
+    color: #c92a2a;
+    border-left-color: #fa5252;
+  }
+  
+  .alert.warning {
+    background-color: #fff9db;
+    color: #e67700;
+    border-left-color: #ffd43b;
+  }
+  
+  .alert.info {
+    background-color: #e7f5ff;
+    color: #1864ab;
+    border-left-color: #4dabf7;
+  }
+  
+  /* Animación de entrada */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .alert {
+      font-size: 1.5rem;
+      padding: 1.2rem 1.5rem;
+    }
+  }

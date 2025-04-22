@@ -1,23 +1,109 @@
 .container {
+    --primary: #4361ee;
+    --text-dark: #2b2d42;
+    --text-light: #8d99ae;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    
     background-color: var(--white);
-    color: #000;
-    border-radius: 1rem;
+    color: var(--text-dark);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
     text-align: center;
-    padding: 1rem;
-}
-.current {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    font-weight: 700;
+  }
+  
+  .current {
     font-size: 6rem;
     font-weight: 900;
     margin: 0;
-}
-.temperatures {
+    line-height: 1;
+    background: linear-gradient(135deg, var(--primary), #3a0ca3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .current::after {
+    content: "°C";
+    position: absolute;
+    top: 0.2em;
+    right: -0.6em;
+    font-size: 0.4em;
+    background: linear-gradient(135deg, var(--primary), #3a0ca3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .temperatures {
     display: flex;
     justify-content: center;
-    gap: 5rem;
-}
-.temperatures p {
-    font-weight: 900;
-}
-.temperatures span {
+    gap: 3rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .temperatures p {
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .temperatures span {
     font-weight: 400;
-}
+    color: var(--text-light);
+    font-size: 0.9rem;
+  }
+  
+  /* Modo oscuro */
+  .darkMode {
+    background-color: #2b2d42;
+    color: var(--white);
+  }
+  
+  .darkMode .temperatures span {
+    color: #8d99ae;
+  }
+  
+  .darkMode .temperatures {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    .current {
+      font-size: 4.5rem;
+    }
+    
+    .temperatures {
+      gap: 2rem;
+    }
+    
+    h2 {
+      font-size: 1.6rem;
+    }
+  }

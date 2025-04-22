@@ -1,31 +1,165 @@
-.form,
+:root {
+  --primary: #4361ee;
+  --primary-light: #4895ef;
+  --primary-dark: #3a56d4;
+  --white: #ffffff;
+  --white-70: rgba(255, 255, 255, 0.7);
+  --white-20: rgba(255, 255, 255, 0.2);
+  --black-10: rgba(0, 0, 0, 0.1);
+  --transition-time: 0.3s;
+  --border-radius: 12px;
+  --focus-glow: 0 0 0 3px rgba(67, 97, 238, 0.3);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2.4rem;
+  border-radius: var(--border-radius);
+  background-color: var(--white-20);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--white-20);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-time) ease;
+}
+
+.form:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--white-70);
+}
+
 .field {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  position: relative;
+}
+
+.field label {
+  color: var(--white);
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-left: 0.4rem;
 }
 
 .form input[type="text"],
 .form select {
-    padding: 1rem;
-    background-color: transparent;
-    border: .3rem solid var(--white);
-    color: var(--white);
-    font-size: 1.8rem;
-    font-weight: 400;
-    border-radius: 1rem;
+  padding: 1.4rem;
+  background-color: var(--white-20);
+  border: 2px solid var(--white);
+  color: var(--white);
+  font-size: 1.6rem;
+  font-weight: 400;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-time) ease;
+  width: 100%;
+  box-sizing: border-box;
 }
+
+.form input[type="text"]:hover,
+.form select:hover {
+  border-color: var(--primary-light);
+  background-color: var(--white-20);
+}
+
+.form input[type="text"]:focus,
+.form select:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: var(--focus-glow);
+  background-color: var(--white-20);
+}
+
 .field ::placeholder {
-    color: var(--white);
+  color: var(--white-70);
+  font-weight: 300;
 }
 
 .submit {
-    background-color: var(--primary);
-    border: none;
-    color: var(--white);
-    font-weight: 700;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    cursor: pointer;
-    padding: 1rem;
+  background-color: var(--primary);
+  border: none;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 1.6rem;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-time) ease;
+  letter-spacing: 1.5px;
+  margin-top: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.submit:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.submit:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.submit:focus {
+  outline: none;
+  box-shadow: var(--focus-glow), var(--shadow-md);
+}
+
+/* Efecto para selects */
+.form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1.2rem center;
+  background-size: 2rem;
+  padding-right: 4rem;
+}
+
+/* Ícono para el botón (opcional) */
+.submit::after {
+  content: '→';
+  font-size: 1.8rem;
+  transition: transform var(--transition-time) ease;
+}
+
+.submit:hover::after {
+  transform: translateX(3px);
+}
+
+/* Validación */
+.form input:invalid {
+  border-color: #ff6b6b;
+}
+
+.form input:invalid:focus {
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .form {
+    padding: 1.8rem;
+    gap: 1.8rem;
+  }
+  
+  .form input[type="text"],
+  .form select {
+    padding: 1.2rem;
+    font-size: 1.5rem;
+  }
+  
+  .submit {
+    padding: 1.4rem;
+    font-size: 1.5rem;
+  }
 }
